@@ -31,7 +31,7 @@ services:
     container_name: container_php
     restart: always
     volumes:
-      - ./project:/var/www/html/
+      - .:/var/www/html/
     ports:
       - "8080:80"
     depends_on:
