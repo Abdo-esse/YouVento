@@ -14,9 +14,11 @@
 
 </head>
 <body>
-       @include('partials.siedbar')
-       <main class="p-4 sm:ml-64">
-        @yield('main')
-       </main>
+  <nav>
+  @yield('navbar')
+  </nav>
+  <main class="p-4 sm:ml-64">
+     @yield('main')
+  </main>
 </body>
 </html>

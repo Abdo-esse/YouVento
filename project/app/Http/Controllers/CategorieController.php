@@ -39,7 +39,9 @@ class CategorieController extends Controller
      */
     public function store(StoreCategorieRequest $request)
     {
-        //
+        $formFields=$request->validated();
+         Categorie::create($formFields);
+         return to_route("categorie.index")->with('siccess','categorie creat successfully');
     }
 
     /**
@@ -84,6 +86,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete();
+        return to_route("categorie.index")->with('siccess','categorie deleted successfully');
     }
 }

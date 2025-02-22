@@ -17,4 +17,4 @@ use App\Http\Controllers\CategorieController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('Categorie', CategorieController::class);
+Route::resource('categorie', CategorieController::class);
