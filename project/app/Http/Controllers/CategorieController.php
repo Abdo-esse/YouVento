@@ -15,7 +15,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        $categories= Categorie::query()->paginate(1);
+        $categories= Categorie::query()->paginate(10);
         return view('categorie.index',compact('categories'));
     }
 
@@ -27,7 +27,8 @@ class CategorieController extends Controller
     public function create()
     {
         $categorie=new Categorie();
-        return view('categorie.create',compact('categorie'));
+        $isUpdate=false;
+        return view('categorie.form',compact('categorie','isUpdate'));
 
     }
 
@@ -63,7 +64,9 @@ class CategorieController extends Controller
      */
     public function edit(Categorie $categorie)
     {
-        //
+        $isUpdate=true;
+        return view('categorie.form',compact('categorie','isUpdate'));
+
     }
 
     /**
@@ -75,7 +78,9 @@ class CategorieController extends Controller
      */
     public function update(UpdateCategorieRequest $request, Categorie $categorie)
     {
-        //
+        $categorie->fill($request->validated())->save();
+        return to_route("categorie.index")->with('success','categorie update successfully');
+        
     }
 
     /**
